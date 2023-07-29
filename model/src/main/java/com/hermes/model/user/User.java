@@ -1,6 +1,5 @@
 package com.hermes.model.user;
 
-import com.atguigu.ssyx.enums.UserType;
 import com.hermes.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -15,8 +14,8 @@ public class User extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@TableField("user_type")
-	private UserType userType;
+//	@TableField("user_type")
+//	private UserType userType;
 
 	@ApiModelProperty(value = "会员头像")
 	@TableField("photo_url")

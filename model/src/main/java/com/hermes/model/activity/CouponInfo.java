@@ -1,7 +1,5 @@
 package com.hermes.model.activity;
 
-import com.atguigu.ssyx.enums.CouponRangeType;
-import com.atguigu.ssyx.enums.CouponType;
 import com.hermes.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -21,9 +19,9 @@ public class CouponInfo extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "购物券类型 1 现金券 2 满减券")
-	@TableField("coupon_type")
-	private CouponType couponType;
+//	@ApiModelProperty(value = "购物券类型 1 现金券 2 满减券")
+//	@TableField("coupon_type")
+//	private CouponType couponType;
 
 	@ApiModelProperty(value = "优惠卷名字")
 	@TableField("coupon_name")
@@ -47,9 +45,9 @@ public class CouponInfo extends BaseEntity {
 	@TableField("end_time")
 	private Date endTime;
 
-	@ApiModelProperty(value = "使用范围[0->全场通用；1->指定分类；2->指定商品]")
-	@TableField("range_type")
-	private CouponRangeType rangeType;
+//	@ApiModelProperty(value = "使用范围[0->全场通用；1->指定分类；2->指定商品]")
+//	@TableField("range_type")
+//	private CouponRangeType rangeType;
 
 	@ApiModelProperty(value = "使用范围描述")
 	@TableField("range_desc")

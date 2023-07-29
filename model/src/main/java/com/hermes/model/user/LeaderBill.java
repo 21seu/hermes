@@ -1,6 +1,5 @@
 package com.hermes.model.user;
 
-import com.atguigu.ssyx.enums.BillType;
 import com.hermes.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -22,9 +21,9 @@ public class LeaderBill extends BaseEntity {
 	@TableField("leader_id")
 	private Long leaderId;
 
-	@ApiModelProperty(value = "账单类型")
-	@TableField("bill_type")
-	private BillType billType;
+//	@ApiModelProperty(value = "账单类型")
+//	@TableField("bill_type")
+//	private BillType billType;
 
 	@ApiModelProperty(value = "业务编号")
 	@TableField("business_no")

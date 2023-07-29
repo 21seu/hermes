@@ -1,7 +1,5 @@
 package com.hermes.model.order;
 
-import com.atguigu.ssyx.enums.PaymentStatus;
-import com.atguigu.ssyx.enums.PaymentType;
 import com.hermes.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -30,10 +28,10 @@ public class PaymentInfo extends BaseEntity {
 	@ApiModelProperty(value = "用户id")
 	@TableField("user_id")
 	private Long userId;
-
-	@ApiModelProperty(value = "支付类型（微信 支付宝）")
-	@TableField("payment_type")
-	private PaymentType paymentType;
+//
+//	@ApiModelProperty(value = "支付类型（微信 支付宝）")
+//	@TableField("payment_type")
+//	private PaymentType paymentType;
 
 	@ApiModelProperty(value = "交易编号")
 	@TableField("trade_no")
@@ -47,9 +45,9 @@ public class PaymentInfo extends BaseEntity {
 	@TableField("subject")
 	private String subject;
 
-	@ApiModelProperty(value = "支付状态")
-	@TableField("payment_status")
-	private PaymentStatus paymentStatus;
+//	@ApiModelProperty(value = "支付状态")
+//	@TableField("payment_status")
+//	private PaymentStatus paymentStatus;
 
 	@ApiModelProperty(value = "回调时间")
 	@TableField("callback_time")

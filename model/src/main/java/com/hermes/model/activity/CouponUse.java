@@ -1,6 +1,6 @@
 package com.hermes.model.activity;
 
-import com.atguigu.ssyx.enums.CouponStatus;
+//import com.atguigu.ssyx.enums.CouponStatus;
 import com.hermes.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -36,9 +36,9 @@ public class CouponUse extends BaseEntity {
 	@TableField("order_id")
 	private Long orderId;
 
-	@ApiModelProperty(value = "购物券状态")
-	@TableField("coupon_status")
-	private CouponStatus couponStatus;
+//	@ApiModelProperty(value = "购物券状态")
+//	@TableField("coupon_status")
+//	private CouponStatus couponStatus;
 
 	@ApiModelProperty(value = "领券时间")
 	@TableField("get_time")

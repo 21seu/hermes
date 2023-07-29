@@ -1,6 +1,5 @@
 package com.hermes.model.order;
 
-import com.atguigu.ssyx.enums.SkuType;
 import com.hermes.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -25,9 +24,9 @@ public class OrderItem extends BaseEntity {
 	@TableField("category_id")
 	private Long categoryId;
 
-	@ApiModelProperty(value = "商品类型：0->普通商品 1->秒杀商品")
-	@TableField("sku_type")
-	private SkuType skuType;
+//	@ApiModelProperty(value = "商品类型：0->普通商品 1->秒杀商品")
+//	@TableField("sku_type")
+//	private SkuType skuType;
 
 	@ApiModelProperty(value = "商品sku编号")
 	@TableField("sku_id")

@@ -1,6 +1,5 @@
 package com.hermes.model.activity;
 
-import com.atguigu.ssyx.enums.ActivityType;
 import com.hermes.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -28,9 +27,9 @@ public class ActivityRule extends BaseEntity {
 	@TableField("activity_id")
 	private Long activityId;
 
-	@ApiModelProperty(value = "活动类型（满减、折扣）")
-	@TableField("activity_type")
-	private ActivityType activityType;
+//	@ApiModelProperty(value = "活动类型（满减、折扣）")
+//	@TableField("activity_type")
+//	private ActivityType activityType;
 
 	@ApiModelProperty(value = "满减金额")
 	@TableField("condition_amount")

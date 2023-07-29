@@ -1,6 +1,5 @@
 package com.hermes.model.order;
 
-import com.atguigu.ssyx.enums.ProcessStatus;
 import com.hermes.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -23,9 +22,9 @@ public class OrderLog extends BaseEntity {
 	@TableField("operate_user")
 	private String operateUser;
 
-	@ApiModelProperty(value = "操作状态")
-	@TableField("process_status")
-	private ProcessStatus processStatus;
+//	@ApiModelProperty(value = "操作状态")
+//	@TableField("process_status")
+//	private ProcessStatus processStatus;
 
 	@ApiModelProperty(value = "备注")
 	@TableField("note")

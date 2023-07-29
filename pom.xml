@@ -36,6 +36,7 @@
         <knife4j.version>2.0.8</knife4j.version>
         <jodatime.version>2.10.1</jodatime.version>
         <xxl-job.version>2.3.0</xxl-job.version>
+        <guava.version>18.0</guava.version>
     </properties>
 
     <!--配置dependencyManagement锁定依赖的版本-->
@@ -107,6 +108,12 @@
                 <artifactId>xxl-job-core</artifactId>
                 <version>${xxl-job.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     <repositories>

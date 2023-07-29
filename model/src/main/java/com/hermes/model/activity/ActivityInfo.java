@@ -1,6 +1,5 @@
 package com.hermes.model.activity;
 
-import com.atguigu.ssyx.enums.ActivityType;
 import com.hermes.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -29,9 +28,9 @@ public class ActivityInfo extends BaseEntity {
 	@TableField("activity_name")
 	private String activityName;
 
-	@ApiModelProperty(value = "活动类型（满减、折扣）")
-	@TableField("activity_type")
-	private ActivityType activityType;
+//	@ApiModelProperty(value = "活动类型（满减、折扣）")
+//	@TableField("activity_type")
+//	private ActivityType activityType;
 
 	@ApiModelProperty(value = "活动描述")
 	@TableField("activity_desc")

@@ -1,7 +1,5 @@
 package com.hermes.model.order;
 
-import com.atguigu.ssyx.enums.OrderStatus;
-import com.atguigu.ssyx.enums.ProcessStatus;
 import com.hermes.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -73,13 +71,13 @@ public class OrderInfo extends BaseEntity {
 	@TableField("source_type")
 	private Integer sourceType;
 
-	@ApiModelProperty(value = "订单状态【0->待付款；1->待发货；2->待团长收货；3->待用户收货，已完成；-1->已取消】")
-	@TableField("order_status")
-	private OrderStatus orderStatus;
-
-	@ApiModelProperty(value = "进度状态")
-	@TableField("process_status")
-	private ProcessStatus processStatus;
+//	@ApiModelProperty(value = "订单状态【0->待付款；1->待发货；2->待团长收货；3->待用户收货，已完成；-1->已取消】")
+//	@TableField("order_status")
+//	private OrderStatus orderStatus;
+//
+//	@ApiModelProperty(value = "进度状态")
+//	@TableField("process_status")
+//	private ProcessStatus processStatus;
 
 	@ApiModelProperty(value = "团长id")
 	@TableField("leader_id")

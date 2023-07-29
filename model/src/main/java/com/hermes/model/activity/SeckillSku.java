@@ -1,7 +1,6 @@
 package com.hermes.model.activity;
 
 import com.hermes.model.base.BaseEntity;
-import com.atguigu.ssyx.model.product.SkuInfo;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
@@ -57,8 +56,8 @@ public class SeckillSku extends BaseEntity {
 	@TableField("seckill_sort")
 	private Integer seckillSort;
 
-	@ApiModelProperty(value = "sku信息")
-	@TableField(exist = false)
-	private SkuInfo skuInfo;
+//	@ApiModelProperty(value = "sku信息")
+//	@TableField(exist = false)
+//	private SkuInfo skuInfo;
 
 }
