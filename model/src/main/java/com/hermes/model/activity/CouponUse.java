@@ -1,6 +1,6 @@
 package com.hermes.model.activity;
 
-//import com.atguigu.ssyx.enums.CouponStatus;
+//import com.hermes.enums.CouponStatus;
 import com.hermes.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
