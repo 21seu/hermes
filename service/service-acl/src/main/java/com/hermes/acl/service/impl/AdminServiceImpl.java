@@ -29,15 +29,15 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     @Override
     public IPage<Admin> selectPage(Page<Admin> pageParam, AdminQueryVo userQueryVo) {
         //获取用户名称条件值
-        String name = userQueryVo.getName();
+        String username = userQueryVo.getUsername();
         //创建条件构造器
         LambdaQueryWrapper<Admin> wrapper = new LambdaQueryWrapper<>();
-        if (!StringUtils.isEmpty(name)) {
+        if (!StringUtils.isEmpty(username)) {
             //封装条件
-            wrapper.like(Admin::getName, name);
+            wrapper.like(Admin::getUsername, username);
         }
         //调用mapper方法
-        IPage<Admin> pageModel = baseMapper.selectPage(pageParam, wrapper);
+        IPage<Admin> pageModel = adminMapper.selectPage(pageParam, wrapper);
         return pageModel;
     }
 }
