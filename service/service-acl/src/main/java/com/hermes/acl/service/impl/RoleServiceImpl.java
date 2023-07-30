@@ -39,6 +39,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
             //封装条件
             wrapper.like(Role::getRoleName, roleName);
         }
+        wrapper.orderByDesc(Role::getUpdateTime);
         //调用mapper方法实现条件分页查询
         IPage<Role> pageModel = baseMapper.selectPage(pageParam, wrapper);
         return pageModel;
