@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hermes.acl.service.AdminService;
 import com.hermes.acl.service.RoleService;
+import com.hermes.commom.constant.ResultEnum;
+import com.hermes.commom.exception.BusinessException;
 import com.hermes.commom.result.Result;
 import com.hermes.model.acl.Admin;
 import com.hermes.utils.MD5Utils;
@@ -15,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author fengtingjun
@@ -23,7 +27,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin/acl/user")
 @Api(tags = "用户管理")
-@CrossOrigin //跨域
+@CrossOrigin
 public class AdminController {
 
     @Autowired
@@ -31,6 +35,24 @@ public class AdminController {
 
     @Autowired
     private RoleService roleService;
+
+    @ApiOperation(value = "为用户进行角色分配")
+    @PostMapping("doAssign")
+    public Result doAssign(@RequestParam Long adminId, @RequestParam Long[] roleIds) {
+        if (Objects.isNull(adminId)) {
+            throw new BusinessException(ResultEnum.ADMIN_ID_CANT_NULL);
+        }
+        roleService.saveUserRoleRelationShip(adminId, roleIds);
+        return Result.success(null);
+    }
+
+
+    @ApiOperation(value = "根据用户获取角色数据")
+    @GetMapping("/toAssign/{adminId}")
+    public Result toAssign(@PathVariable Long adminId) {
+        Map<String, Object> roleMap = roleService.findRoleByUserId(adminId);
+        return Result.success(roleMap);
+    }
 
     @ApiOperation(value = "获取管理用户分页列表")
     @GetMapping("{page}/{limit}")

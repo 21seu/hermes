@@ -1,15 +1,26 @@
 package com.hermes.acl.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.hermes.acl.mapper.RoleMapper;
+import com.hermes.acl.service.AdminRoleService;
 import com.hermes.acl.service.RoleService;
+import com.hermes.model.acl.AdminRole;
 import com.hermes.model.acl.Role;
 import com.hermes.vo.acl.RoleQueryVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author fengtingjun
@@ -17,6 +28,9 @@ import org.springframework.util.StringUtils;
  */
 @Service
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
+
+    @Autowired
+    private AdminRoleService adminRoleService;
 
     /**
      * 角色分页列表
@@ -44,5 +58,69 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         IPage<Role> pageModel = baseMapper.selectPage(pageParam, wrapper);
         return pageModel;
 
+    }
+
+    /**
+     * 根据用户获取角色数据
+     *
+     * @param adminId
+     * @return {@link Map }<{@link String }, {@link Object }>
+     * @author fengtingjun
+     * @date 2023/08/01
+     */
+    @Override
+    public Map<String, Object> findRoleByUserId(Long adminId) {
+        //查询所有的角色
+        List<Role> allRolesList = baseMapper.selectList(null);
+
+        //拥有的角色id
+        List<AdminRole> existUserRoleList = adminRoleService.list(new QueryWrapper<AdminRole>()
+                .eq("admin_id", adminId)
+                .select("role_id"));
+        List<Long> existRoleList = existUserRoleList.stream()
+                .map(AdminRole::getRoleId)
+                .collect(Collectors.toList());
+
+        //对角色进行分类
+        List<Role> assignRoles = Lists.newArrayList();
+        for (Role role : allRolesList) {
+            //已分配
+            if (existRoleList.contains(role.getId())) {
+                assignRoles.add(role);
+            }
+        }
+
+        Map<String, Object> roleMap = Maps.newHashMap();
+        roleMap.put("assignRoles", assignRoles);
+        roleMap.put("allRolesList", allRolesList);
+        return roleMap;
+    }
+
+    /**
+     * 根据用户id分配角色id
+     *
+     * @param adminId 用户id
+     * @param roleIds  角色id列表
+     * @author fengtingjun
+     * @date 2023/08/01
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void saveUserRoleRelationShip(Long adminId, Long[] roleIds) {
+        //1、删除用户已经分配过的角色
+        adminRoleService.remove(new QueryWrapper<AdminRole>().eq("admin_id", adminId));
+        //分配新的角色
+        List<AdminRole> userRoleList = Lists.newArrayList();
+        for (Long roleId : roleIds) {
+            if (StringUtils.isEmpty(roleId)) {
+                continue;
+            }
+
+            AdminRole userRole = new AdminRole();
+            userRole.setAdminId(adminId);
+            userRole.setRoleId(roleId);
+            userRoleList.add(userRole);
+        }
+        adminRoleService.saveBatch(userRoleList);
     }
 }
