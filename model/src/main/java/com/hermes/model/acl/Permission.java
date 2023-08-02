@@ -12,12 +12,12 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * <p>
  * 权限
- * </p>
+ * 1.0.0
  *
- * @author qy
- * @since 2019-11-08
+ * @author fengtingjun
+ * @desc 权限
+ * @date 2023/08/01
  */
 @Data
 @ApiModel(description = "权限")
